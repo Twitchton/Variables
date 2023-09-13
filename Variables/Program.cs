@@ -65,6 +65,15 @@ namespace Variables
                     health -= enemyDamage; 
                 }
 
+                Console.WriteLine("You took Damage!");
+
+                //killing enemy
+                enemies--;
+                score += (int)(enemyValue * scoreMult);
+                scoreMult += 0.5f;
+
+                Console.WriteLine("You killed an Enemy!");
+
                 //checking health
                 if (health<=0.0f)
                 {
@@ -72,6 +81,8 @@ namespace Variables
                     health = 100.0f;
                     shield = 100.0f;
                     scoreMult = 1.0f;
+
+                    Console.WriteLine("You lost one life.");
                 }
 
                 //checking lives
@@ -79,19 +90,16 @@ namespace Variables
                 {
                     score = 0;
                     endMessage = "You Lose :(";
+                    Console.WriteLine("You DIED.\n");
                     break;
 
                 }
-
-                //killing enemy
-                enemies--;
-                score += (int)(enemyValue * scoreMult);
-                scoreMult += 0.5f;
 
                 //picking up shield kit
                 if (i%3 == 0)
                 {
                     shield += 50.0f;
+                    Console.WriteLine("You picked up a SHIELD KIT!");
                 }
 
                 //picking up health kit
@@ -102,12 +110,16 @@ namespace Variables
                     {
                         health = 100.0f;
                     }
+                    Console.WriteLine("You picked up a HEALTH KIT!");
                 }
+
+                //event log
+                
 
             }
 
             //Printing Final message
-            Console.WriteLine("----------------");
+            Console.WriteLine("\n----------------");
             Console.WriteLine(gameTitle + ":");
             Console.WriteLine("----------------");
             Console.WriteLine("By: " + studioName);
