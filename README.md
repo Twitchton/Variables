@@ -1,0 +1,2 @@
+# Variables
+ Exploration of variables
